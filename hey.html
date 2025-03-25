@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Website Form</title>
+<style>
+  label { display: block; margin-bottom: 5px; }
+  input, textarea, select { width: 300px; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; }
+  .error { color: red; }
+</style>
+</head>
+<body>
+
+<h2>Website Form</h2>
+
+<form id="myForm" action="/submit" method="post">
+
+  <label for="fullName">Full Name (Required, Max 100 characters):</label>
+  <input type="text" id="fullName" name="fullName" maxlength="100" required>
+  <span id="fullNameError" class="error"></span>
+
+  <label for="email">Email (Required, Valid format):</label>
+  <input type="email" id="email" name="email" required>
+  <span id="emailError" class="error"></span>
+
+  <label for="phoneNumber">Phone Number (Optional, Valid format):</label>
+  <input type="tel" id="phoneNumber" name="phoneNumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+  <span id="phoneNumberError" class="error"></span>
+
+  <label for="dateOfBirth">Date of Birth (Required, Date format):</label>
+  <input type="date" id="dateOfBirth" name="dateOfBirth" required>
+  <span id="dateOfBirthError" class="error"></span>
+
+  <label for="country">Country (Required, Select from list):</label>
+  <select id="country" name="country" required>
+    <option value="">Select Country</option>
+    <option value="US">United States</option>
+    <option value="CA">Canada</option>
+    <option value="UK">United Kingdom</option>
+    <option value="DE">Germany</option>
+    <option value="FR">France</option>
+    <option value="JP">Japan</option>
+    <option value="CN">China</option>
+    <option value="IN">India</option>
+  </select>
+  <span id="countryError" class="error"></span>
+
+  <label for="message">Message (Required, Max 500 characters):</label>
+  <textarea id="message" name="message" maxlength="500" required></textarea>
+  <span id="messageError" class="error"></span>
+
+  <label for="fileUpload">Upload File (Optional, Max 2MB, PDF/DOCX):</label>
+  <input type="file" id="fileUpload" name="fileUpload" accept=".pdf,.docx" max-size="2097152">
+  <span id="fileUploadError" class="error"></span>
+
+  <label>Gender (Required):</label>
+  <input type="radio" id="male" name="gender" value="male" required>
+  <label for="male">Male</label>
+  <input type="radio" id="female" name="gender" value="female" required>
+  <label for="female">Female</label>
+  <input type="radio" id="other" name="gender" value="other" required>
+  <label for="other">Other</label>
+  <span id="genderError" class="error"></span>
+
+  <label>Terms and Conditions (Required):</label>
+  <input type="checkbox" id="terms" name="terms" required>
+  <label for="terms">I agree to the terms and conditions.</label>
+  <span id="termsError" class="error"></span>
+
+  <label for="password">Password (Required, Minimum 8 characters, alphanumeric):</label>
+  <input type="password" id="password" name="password" minlength="8" required>
+  <span id="passwordError" class="error"></span>
+
+  <label for="confirmPassword">Confirm Password (Required, must match password):</label>
+  <input type="password" id="confirmPassword" name="confirmPassword" required>
+  <span id="confirmPasswordError" class="error"></span>
+
+  <label for="age">Age (Optional, Numeric Value):</label>
+  <input type="number" id="age" name="age" min="1" max="150" >
+  <span id="ageError" class="error"></span>
+
+  <label for="url">Website URL (Optional, Valid URL):</label>
+  <input type="url" id="url" name="url">
+  <span id="urlError" class="error"></span>
+
+  <label for="color">Favorite color (optional)</label>
+  <input type="color" id="color" name="color">
+
+  <button type="submit">Submit</button>
+</form>
+
+<script>
+  // Basic client-side validation (expand as needed)
+  document.getElementById('myForm').addEventListener('submit', function(event) {
+    // Example: password matching validation
+    const password = document.getElementById('password').value;
+    const confirmPassword = document.getElementById('confirmPassword').value;
+    if (password !== confirmPassword) {
+      document.getElementById('confirmPasswordError').textContent = "Passwords do not match.";
+      event.preventDefault(); // Prevent form submission
+    } else {
+      document.getElementById('confirmPasswordError').textContent = ""; //clear error
+    }
+
+  });
+</script>
+
+</body>
+</html
